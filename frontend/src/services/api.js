@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-// 1. Ambil URL base API dari environment variables
-//    Ini akan menggunakan nilai dari file .env.local saat development
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// Tentukan baseURL secara dinamis berdasarkan lingkungan (production atau development)
+const baseURL = import.meta.env.PROD
+  ? '/api' // Gunakan relative path untuk production (Vercel)
+  : 'http://localhost:3001/api'; // Gunakan absolute path untuk development (lokal)
 
+// Buat instance apiClient dengan baseURL yang sudah dinamis
 const apiClient = axios.create({
     baseURL: baseURL,
     headers: {
@@ -12,22 +14,16 @@ const apiClient = axios.create({
     }
 });
 
-// 2. INTERCEPTOR: Kode ini akan berjalan SEBELUM setiap request dikirim.
-//    Ini adalah bagian paling penting untuk autentikasi.
+// Interceptor untuk menambahkan token JWT secara otomatis ke setiap request
 apiClient.interceptors.request.use(
     (config) => {
-        // Ambil token dari localStorage (tempat kita akan menyimpannya setelah login)
         const token = localStorage.getItem('authToken');
-
-        // Jika token ada, tambahkan ke header Authorization
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
-
         return config;
     },
     (error) => {
-        // Lakukan sesuatu jika ada error saat konfigurasi request
         return Promise.reject(error);
     }
 );
