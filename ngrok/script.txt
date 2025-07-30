@@ -1,0 +1,7 @@
+ngrok config add-authtoken 30c16S5bGkJBBOWrOLkYSRegIAF_3uDduMpWRBrCbxSnZMD1m
+
+ngrok http --url=raven-thorough-marginally.ngrok-free.app 3001
+
+ngrok config add-authtoken 30bvn0kmhJ69AEcnHqB6OLBbn8o_7u1nxVboKmppRjPpmUeV7
+
+ngrok http --url=wolf-supreme-grouse.ngrok-free.app 5176
