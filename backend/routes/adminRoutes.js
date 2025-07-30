@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/uploadMiddleware');
 
-// Import semua controller yang memiliki metode Admin
+// Import middleware proteksi
+const { isAdminLoggedIn } = require('../middleware/authAdminMiddleware');
+
+// Import semua controller
+const authAdminController = require('../controllers/authAdminController');
 const bannerController = require('../controllers/bannerController');
 const checkoutController = require('../controllers/checkoutController');
 const consoleController = require('../controllers/consoleController');
@@ -13,11 +17,19 @@ const pcRakitanController = require('../controllers/pcRakitanController');
 const techNewsController = require('../controllers/techNewsController');
 const userController = require('../controllers/userController');
 
-// Middleware untuk melindungi semua rute admin (bisa diaktifkan nanti dengan menghapus //)
-// const { protect, isAdmin } = require('../middleware/authMiddleware');
-// router.use(protect, isAdmin);
+// ==========================================================
+// || RUTE AUTENTIKASI (PUBLIK)                            ||
+// ==========================================================
+router.get('/login', authAdminController.renderLoginPage);
+router.post('/login', authAdminController.handleLogin);
+router.get('/logout', authAdminController.handleLogout); // Gunakan GET untuk logout yang mudah via link
 
-// --- Users Routes (Dashboard Utama) ---
+// ==========================================================
+// || SEMUA RUTE DI BAWAH INI SEKARANG TERPROTEKSI         ||
+// ==========================================================
+router.use(isAdminLoggedIn);
+
+// --- Dashboard / Users Routes ---
 router.get('/users', userController.renderListPage);
 router.get('/users/create', userController.renderCreatePage);
 router.post('/users', userController.handleCreateForm);

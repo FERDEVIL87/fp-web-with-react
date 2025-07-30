@@ -4,39 +4,25 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "config": { "distDir": "dist" }
     },
     {
       "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/backend/index.js"
+      "source": "/api/:path*",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/admin/(.*)",
-      "dest": "/backend/index.js"
+      "source": "/admin/:path*",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/imgprofil/(.*)",
-      "dest": "/imgprofil/$1"
-    },
-    {
-      "src": "/videos/(.*)",
-      "dest": "/videos/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/:path*",
+      "destination": "/frontend/index.html"
     }
   ]
 }

@@ -14,9 +14,15 @@
 <body>
 
     <header class="admin-header p-3 d-flex justify-content-between align-items-center">
+        <img src="/public/logo.webp" alt="Logo" style="height: 40px; margin-right: 10px;">
         <h5 class="mb-0">JWR Admin Panel</h5>
         <div>
-            <!-- Nanti bisa ditambahkan profil user dan tombol logout di sini -->
-            <a href="#" class="btn btn-outline-danger btn-sm">Logout</a>
+            <!-- Tampilkan nama user jika sudah login (opsional) -->
+            <% if (locals.user && user.username) { %>
+                <span class="text-muted me-3">Halo, <%= user.username %></span>
+            <% } %>
+
+            <!-- Arahkan link ke rute logout -->
+            <a href="/admin/logout" class="btn btn-outline-danger btn-sm">Logout</a>
         </div>
     </header>
