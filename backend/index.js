@@ -14,13 +14,39 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 
 // --- Konfigurasi Middleware ---
+
+// ==========================================================
+// ||     KONFIGURASI CORS YANG DIPERBARUI DI SINI          ||
+// ==========================================================
+// Daftar origin (URL frontend) yang diizinkan untuk mengakses backend ini
+const allowedOrigins = [
+    'http://localhost:5173', // Port untuk `npm run dev`
+    'http://localhost:4173', // Port untuk `npm run preview`
+    'https://fp-web-with-react-s9cj.vercel.app/', // Nanti, tambahkan URL Vercel Anda di sini setelah deploy
+    
+];
+
+// Opsi konfigurasi CORS yang dinamis
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Izinkan request jika origin ada di dalam daftar `allowedOrigins`,
+    // atau jika request tidak memiliki origin (misalnya, dari Postman).
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Akses diblokir oleh kebijakan CORS'));
+    }
+  },
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204
 };
+
+// Gunakan middleware cors dengan opsi yang sudah dikonfigurasi
 app.use(cors(corsOptions));
+// ==========================================================
+
+
 app.use(session({ secret: process.env.JWT_SECRET || 'ganti_dengan_kunci_rahasia_yang_sangat_aman', resave: false, saveUninitialized: true, cookie: { secure: process.env.NODE_ENV === 'production' } }));
 app.use(flash());
 app.set('view engine', 'ejs');

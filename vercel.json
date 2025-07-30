@@ -4,7 +4,9 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": {
+        "distDir": "dist"
+      }
     },
     {
       "src": "backend/index.js",
@@ -22,19 +24,27 @@
     },
     {
       "src": "/assets/(.*)",
-      "dest": "/frontend/dist/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/imgprofil/(.*)",
-      "dest": "/frontend/dist/imgprofil/$1"
+      "dest": "/imgprofil/$1"
     },
     {
       "src": "/videos/(.*)",
-      "dest": "/frontend/dist/videos/$1"
+      "dest": "/videos/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/logo.webp",
+      "dest": "/logo.webp"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/index.html"
+      "dest": "/index.html"
     }
   ]
 }
