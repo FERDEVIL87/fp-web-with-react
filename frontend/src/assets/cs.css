@@ -1,0 +1,52 @@
+/* Dipindahkan dari <style scoped> CustomerService.vue */
+.custom-card {
+  max-width: 430px;
+  width: 100%;
+  border-radius: 1.2rem;
+  background: #181c22;
+  border: 1.5px solid #00d9ff33;
+}
+
+.form-control {
+    background-color: #23272f !important; 
+    color: #e8eff5 !important; 
+    border-color: #00d9ff55 !important;
+    padding: 0.75rem 1rem;
+    border-radius: 0.7rem;
+}
+.form-control::placeholder {
+    color: #adb5bdAA !important; 
+}
+.form-control:focus {
+    border-color: #00d9ff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.18) !important;
+}
+.btn-info {
+    background-color: #00d9ff;
+    border-color: #00d9ff;
+    color: #181c22;
+    font-weight: bold;
+    border-radius: 0.7rem;
+    transition: background 0.2s;
+}
+.btn-info:active, .btn-info:focus, .btn-info:hover {
+    background-color: #00b6d6;
+    border-color: #00b6d6;
+    color: #fff;
+}
+.alert {
+  margin-bottom: 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.98rem;
+}
+.text-info {
+  color: #00d9ff !important;
+}
+.border-info {
+  border-color: #00d9ff !important;
+}
+.desc-info {
+  color: #e8eff5;
+  font-size: 1rem;
+  opacity: 0.92;
+}

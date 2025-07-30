@@ -1,0 +1,71 @@
+/* Dipindahkan dari <style scoped> Hardware.vue */
+.bg-dark { background: #181c22 !important; }
+.card { 
+    border-radius: 10px; 
+    border-width: 1.5px; 
+}
+.card-img-top { border-radius: 10px 10px 0 0; }
+.btn-outline-info.active,
+.btn-outline-info:active,
+.btn-outline-info:focus {
+  background-color: #00d9ff !important;
+  color: #181c22 !important;
+  border-color: #00d9ff !important;
+}
+.form-control, .form-select {
+    background-color: #2a3038 !important; 
+    color: #e8eff5 !important; 
+    border-color: #00d9ff55 !important; 
+}
+.form-control::placeholder {
+    color: #adb5bdAA !important; 
+}
+.form-control:focus, .form-select:focus {
+    border-color: #00d9ff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25) !important;
+}
+.form-range::-webkit-slider-thumb {
+  background-color: #00d9ff;
+}
+.form-range::-moz-range-thumb {
+  background-color: #00d9ff;
+}
+.form-range::-ms-thumb {
+  background-color: #00d9ff;
+}
+
+.modal-footer {
+    border-top-color: var(--bs-secondary);
+}
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+h2.text-center.fw-bold.mb-4 {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+h2.text-center.fw-bold.mb-4::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00d9ff 0%, #007bff 100%);
+}
+
+.text-muted{
+  color: white !important;
+}
+
+@media (max-width: 575.98px) {
+  h2.text-center.fw-bold.mb-4::after {
+    width: 50px;
+    height: 3px;
+    margin-top: 7px;
+  }
+}
