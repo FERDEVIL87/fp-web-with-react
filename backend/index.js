@@ -22,7 +22,7 @@ const app = express();
 const allowedOrigins = [
     'http://localhost:5173', // Port untuk `npm run dev`
     'http://localhost:4173', // Port untuk `npm run preview`
-    'https://fp-web-with-react-s9cj.vercel.app/', // Nanti, tambahkan URL Vercel Anda di sini setelah deploy
+    'https://fp-web-with-react.vercel.app/', // Nanti, tambahkan URL Vercel Anda di sini setelah deploy
     
 ];
 
