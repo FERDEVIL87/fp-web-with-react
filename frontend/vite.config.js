@@ -11,8 +11,8 @@ export default defineConfig({
     }
   },
   server: {
-    port: 5176, // ganti port dev server (jika ingin seragam)
-    allowedHosts: ['wolf-supreme-grouse.ngrok-free.app'],
+    port: 5173, // ganti port dev server (jika ingin seragam)
+    allowedHosts: ['wolf-supreme-grouse.ngrok-free.app', 'raven-thorough-marginally.ngrok-free.app'],
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
@@ -23,9 +23,9 @@ export default defineConfig({
     }
   },
   preview: {
-    port: 5176,              // Mengatur port untuk preview
+    port: 4173,              // Mengatur port untuk preview
     strictPort: true,        // Pastikan tidak auto pindah ke port lain
-    allowedHosts: ['wolf-supreme-grouse.ngrok-free.app'],
+    allowedHosts: ['wolf-supreme-grouse.ngrok-free.app', 'raven-thorough-marginally.ngrok-free.app'],
     proxy: {
       '/api': {
         target: 'http://localhost:3001',

@@ -5,7 +5,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import apiClient from '@/services/api.js';
 import '@/assets/Home.css';
 
-import doomVideoPoster from "/videos/doom.webm";
+import doomVideoPoster from "/public/videos/doom.webm";
 
 // --- LOGIKA UNTUK BANNER ---
 const banners = ref([]);
@@ -156,7 +156,7 @@ onMounted(() => {
         :poster="doomVideoPoster"
         preload="metadata"
       >
-        <source src="/videos/doom.webm" type="video/mp4">
+        <source src="/src/img home/video/doom.mp4" type="video/mp4">
         <track kind="captions" src="" srclang="en" label="English captions" default>
         Your browser does not support the video tag.
       </video>
